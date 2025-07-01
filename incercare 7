@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serendipity Spot - Camere de Închiriat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scroll-margin-top for fixed header */
+        section {
+            scroll-margin-top: 80px; /* Adjust this value based on your header's height */
+        }
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px; /* rounded-full */
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+        .slider-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .slider-button.left {
+            left: 1rem;
+        }
+        .slider-button.right {
+            right: 1rem;
+        }
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Custom colors for mint green and dark blue */
+        .bg-mint-green { background-color: #B9D8C2; }
+        .text-mint-green { color: #B9D8C2; }
+        .hover\:bg-mint-green-darker:hover { background-color: #A2C7B0; } /* Slightly darker mint for hover */
+        .bg-dark-blue { background-color: #1C2B39; }
+        .text-dark-blue { color: #1C2B39; }
+        .hover\:text-mint-green:hover { color: #B9D8C2; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header fixat -->
+    <header class="fixed-header py-4 px-6 md:px-12 flex justify-between items-center rounded-b-xl">
+        <div class="text-2xl font-bold text-dark-blue">
+            <!-- Logo-ul tău aici. Poți înlocui 'https://placehold.co/150x40/B9D8C2/1C2B39?text=Logo' cu URL-ul logo-ului tău real. -->
+            <img src="./Images/" alt="Serendipity Spot Logo" class="h-10">
+        </div>
+        <nav class="hidden md:flex space-x-6">
+            <a href="#acasa" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Acasă</a>
+            <a href="#despre-noi" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Despre Noi</a>
+            <a href="#camere" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Camere</a>
+            <a href="#rezervari" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Rezervări</a>
+            <a href="#parteneriate" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Parteneriate</a>
+            <a href="#contact" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Contact</a>
+        </nav>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-dark-blue focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </header>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white bg-opacity-95 z-90 flex flex-col items-center justify-center space-y-6 md:hidden">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-600 hover:text-dark-blue focus:outline-none">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <a href="#acasa" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Acasă</a>
+        <a href="#despre-noi" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Despre Noi</a>
+        <a href="#camere" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Camere</a>
+        <a href="#rezervari" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Rezervări</a>
+        <a href="#parteneriate" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Parteneriate</a>
+        <a href="#contact" class="text-gray-800 text-2xl hover:text-dark-blue font-medium transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+    </div>
+
+    <main class="pt-20"> <!-- Padding top to account for fixed header -->
+
+        <!-- Secțiunea 1: Acasă -->
+        <section id="acasa" class="relative bg-mint-green text-dark-blue py-24 px-6 md:px-12 flex items-center justify-center rounded-b-xl min-h-[60vh]">
+            <div class="text-center max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+                    Serendipity Spot: Spațiul Tău Ideal pentru Productivitate și Relaxare
+                </h1>
+                <p class="text-lg md:text-xl mb-8 opacity-90">
+                    Oferim cabinete premium, perfecte pentru sesiuni de lucru, întâlniri private sau momente de relaxare. Descoperă confortul și flexibilitatea de care ai nevoie.
+                </p>
+                <a href="#camere" class="bg-dark-blue text-white hover:bg-gray-700 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Explorează Camerele Noastre
+                </a>
+            </div>
+        </section>
+
+        <!-- Secțiunea 2: Despre Noi -->
+        <section id="despre-noi" class="py-16 px-6 md:px-12 bg-white rounded-xl shadow-md mx-auto my-12 max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">Despre Noi și Ce Oferim</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-lg text-gray-700 leading-relaxed">
+                    <p class="mb-4">
+                        La Serendipity Spot, suntem dedicați să oferim un spațiu versatil și confortabil, adaptat nevoilor tale. Fie că ești profesionist și ai nevoie de un birou privat pentru câteva ore, un terapeut care caută un cabinet liniștit pentru sesiuni, sau pur și simplu vrei un loc relaxant pentru a te deconecta, noi avem soluția.
+                    </p>
+                    <p class="mb-4">
+                        Ne mândrim cu o atmosferă primitoare, dotări moderne și o flexibilitate inegalabilă. Fiecare cameră este amenajată cu atenție la detalii, asigurând un mediu propice pentru orice activitate.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li> Flexibilitate maximă: rezervări pe oră sau pe zi.</li>
+                        <li> 2 cabinete individuale gata de utilizare.</li>
+                        <li> O sala de grup, de 8-10 persoane, cu tabla si markere.</li>
+                        <li> Un cabinet pretabil pentru activitati cu copii.</li>
+                        <li> Acces la bucataria complet mobilata si utilata.</li>
+                        <li> Acces facil la mijloace de transpot in comun.</li>
+                    </ul>
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="./Images/IMG_20250614_115006.jpg" alt="Spațiu Modern" class="rounded-xl shadow-lg w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Secțiunea 3: Camere -->
+        <section id="camere" class="py-16 px-6 md:px-12 bg-gray-100 my-12 rounded-xl shadow-md mx-auto max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Camerele Noastre</h2>
+
+            <!-- Camera 1 -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 w-full slider-container" data-room="camera1">
+                    <div class="slider-wrapper">
+                        <img src="./Images/IMG_20250614_114550.jpg" alt="Camera 1 Imagine 1" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_114624.jpg" alt="Camera 1 Imagine 2" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_114652.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_114734.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_114753.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_115057.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
+                    </div>
+                    <button class="slider-button left" onclick="moveSlide('camera1', -1)">&#10094;</button>
+                    <button class="slider-button right" onclick="moveSlide('camera1', 1)">&#10095;</button>
+                </div>
+                <div class="md:w-1/2 w-full text-center md:text-left">
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Deluxe</h3>
+                    <p class="text-gray-700 mb-6">
+                        O cameră spațioasă și elegantă, ideală pentru sesiuni de coaching, întâlniri de afaceri sau sesiuni de terapie. Dotată cu mobilier modern și lumină naturală abundentă.
+                    </p>
+                    <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
+                        Rezervă Camera Deluxe
+                    </a>
+                </div>
+            </div>
+
+            <!-- Camera 2 -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2 w-full slider-container" data-room="camera2">
+                    <div class="slider-wrapper">
+                        <img src="https://placehold.co/800x600/FFFDE7/333333?text=Camera+2+-+Imagine+1" alt="Camera 2 Imagine 1" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/FFE0B2/333333?text=Camera+2+-+Imagine+2" alt="Camera 2 Imagine 2" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/FFCCBC/333333?text=Camera+2+-+Imagine+3" alt="Camera 2 Imagine 3" class="slider-item rounded-xl">
+                    </div>
+                    <button class="slider-button left" onclick="moveSlide('camera2', -1)">&#10094;</button>
+                    <button class="slider-button right" onclick="moveSlide('camera2', 1)">&#10095;</button>
+                </div>
+                <div class="md:w-1/2 w-full text-center md:text-right">
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Zen</h3>
+                    <p class="text-gray-700 mb-6">
+                        O oază de liniște, perfectă pentru meditație, yoga sau sesiuni de relaxare. Design minimalist și o atmosferă calmă, ideală pentru a te deconecta.
+                    </p>
+                    <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
+                        Rezervă Camera Zen
+                    </a>
+                </div>
+            </div>
+
+            <!-- Camera 3 -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 w-full slider-container" data-room="camera3">
+                    <div class="slider-wrapper">
+                        <img src="https://placehold.co/800x600/CFD8DC/333333?text=Camera+3+-+Imagine+1" alt="Camera 3 Imagine 1" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/B2EBF2/333333?text=Camera+3+-+Imagine+2" alt="Camera 3 Imagine 2" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/80DEEA/333333?text=Camera+3+-+Imagine+3" class="slider-item rounded-xl">
+                    </div>
+                    <button class="slider-button left" onclick="moveSlide('camera3', -1)">&#10094;</button>
+                    <button class="slider-button right" onclick="moveSlide('camera3', 1)">&#10095;</button>
+                </div>
+                <div class="md:w-1/2 w-full text-center md:text-left">
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Creativă</h3>
+                    <p class="text-gray-700 mb-6">
+                        Un spațiu vibrant, conceput pentru brainstorming, workshop-uri sau sesiuni creative. Echipată cu tablă de scris și facilități pentru prezentări.
+                    </p>
+                    <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
+                        Rezervă Camera Creativă
+                    </a>
+                </div>
+            </div>
+
+            <!-- Camera 4 -->
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg flex flex-col md:flex-row-reverse items-center gap-8">
+                <div class="md:w-1/2 w-full slider-container" data-room="camera4">
+                    <div class="slider-wrapper">
+                        <img src="https://placehold.co/800x600/F8BBD0/333333?text=Camera+4+-+Imagine+1" alt="Camera 4 Imagine 1" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/F48FB1/333333?text=Camera+4+-+Imagine+2" alt="Camera 4 Imagine 2" class="slider-item rounded-xl">
+                        <img src="https://placehold.co/800x600/F06292/333333?text=Camera+4+-+Imagine+3" alt="Camera 4 Imagine 3" class="slider-item rounded-xl">
+                    </div>
+                    <button class="slider-button left" onclick="moveSlide('camera4', -1)">&#10094;</button>
+                    <button class="slider-button right" onclick="moveSlide('camera4', 1)">&#10095;</button>
+                </div>
+                <div class="md:w-1/2 w-full text-center md:text-right">
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Confort</h3>
+                    <p class="text-gray-700 mb-6">
+                        Perfectă pentru sesiuni individuale sau întâlniri restrânse. Oferă un ambient cald și intim, ideal pentru discuții confidențiale.
+                    </p>
+                    <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
+                        Rezervă Camera Confort
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secțiunea 4: Rezervări -->
+        <section id="rezervari" class="py-16 px-6 md:px-12 bg-white my-12 rounded-xl shadow-md mx-auto max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">Formular de Rezervare</h2>
+            <form id="booking-form" class="max-w-xl mx-auto p-8 bg-gray-50 rounded-xl shadow-lg">
+                <div class="mb-6">
+                    <label for="room-select" class="block text-gray-700 text-sm font-bold mb-2">Alege Camera:</label>
+                    <select id="room-select" name="room" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" required>
+                        <option value="">Selectează o cameră</option>
+                        <option value="camera-deluxe">Camera Deluxe</option>
+                        <option value="camera-zen">Camera Zen</option>
+                        <option value="camera-creativa">Camera Creativă</option>
+                        <option value="camera-confort">Camera Confort</option>
+                    </select>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Tip de Rezervare:</label>
+                    <div class="flex space-x-4">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="booking-type" value="hourly" class="form-radio h-5 w-5 text-mint-green" checked onchange="toggleBookingOptions()">
+                            <span class="ml-2 text-gray-700">Pe Oră</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="booking-type" value="daily" class="form-radio h-5 w-5 text-mint-green" onchange="toggleBookingOptions()">
+                            <span class="ml-2 text-gray-700">Pe Zi</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="booking-date" class="block text-gray-700 text-sm font-bold mb-2">Data Rezervării:</label>
+                    <input type="date" id="booking-date" name="date" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" required>
+                </div>
+
+                <!-- Opțiuni pentru rezervare pe oră -->
+                <div id="hourly-options" class="mb-6">
+                    <div class="mb-4">
+                        <label for="hourly-start-time" class="block text-gray-700 text-sm font-bold mb-2">Ora de Început (8:00 - 22:00):</label>
+                        <select id="hourly-start-time" name="hourly-start-time" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" required>
+                            <!-- Options will be dynamically generated by JS -->
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hourly-duration" class="block text-gray-700 text-sm font-bold mb-2">Durata (ore):</label>
+                        <select id="hourly-duration" name="hourly-duration" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" required>
+                            <!-- Options will be dynamically generated by JS -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Opțiuni pentru rezervare pe zi (ascunse inițial) -->
+                <div id="daily-options" class="mb-6 hidden">
+                    <label for="daily-start-time" class="block text-gray-700 text-sm font-bold mb-2">Ora de Început (pe zi):</label>
+                    <select id="daily-start-time" name="daily-start-time" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200">
+                        <!-- Options will be dynamically generated by JS -->
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="user-name" class="block text-gray-700 text-sm font-bold mb-2">Numele Tău:</label>
+                    <input type="text" id="user-name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" placeholder="Numele Complet" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="user-email" class="block text-gray-700 text-sm font-bold mb-2">Adresa de Email:</label>
+                    <input type="email" id="user-email" name="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" placeholder="adresa@exemplu.com" required>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <button type="submit" class="bg-mint-green hover:bg-mint-green-darker text-dark-blue font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+                        Trimite Rezervarea
+                    </button>
+                </div>
+            </form>
+            <div id="booking-message" class="mt-8 p-4 bg-green-100 text-green-800 rounded-lg hidden">
+                Rezervarea a fost trimisă cu succes! Vă vom contacta în curând.
+            </div>
+            <div id="error-message" class="mt-8 p-4 bg-red-100 text-red-800 rounded-lg hidden">
+                A apărut o eroare la trimiterea rezervării. Vă rugăm să încercați din nou.
+            </div>
+        </section>
+
+        <!-- Secțiunea 5: Parteneriate -->
+        <section id="parteneriate" class="py-16 px-6 md:px-12 bg-gray-100 my-12 rounded-xl shadow-md mx-auto max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">Parteneriate și Recomandări</h2>
+            <p class="text-lg text-gray-700 text-center mb-12 max-w-2xl mx-auto">
+                Suntem mândri să colaborăm cu profesioniști și afaceri care utilizează spațiile noastre. Descoperă serviciile oferite de partenerii noștri.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Exemplu de card partener -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/120x120/B9D8C2/1C2B39?text=Logo+Partener+1" alt="Logo Partener 1" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-dark-blue mb-2">Cabinet Psihologic "Echilibru"</h3>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Servicii de consiliere și terapie individuală, de cuplu și de familie.
+                    </p>
+                    <a href="#" class="text-dark-blue hover:text-mint-green font-medium">Vizitează Site-ul <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                <!-- Repetați pentru mai mulți parteneri -->
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/120x120/B9D8C2/1C2B39?text=Logo+Partener+2" alt="Logo Partener 2" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-dark-blue mb-2">Centrul de Coaching "Viziune"</h3>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Sesiuni de coaching personal și profesional pentru dezvoltarea potențialului.
+                    </p>
+                    <a href="#" class="text-dark-blue hover:text-mint-green font-medium">Vizitează Site-ul <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/120x120/B9D8C2/1C2B39?text=Logo+Partener+3" alt="Logo Partener 3" class="mx-auto mb-4 rounded-full">
+                    <h3 class="text-xl font-semibold text-dark-blue mb-2">Atelier de Creație "Inspirație"</h3>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Workshop-uri de artă și creativitate pentru toate vârstele.
+                    </p>
+                    <a href="#" class="text-dark-blue hover:text-mint-green font-medium">Vizitează Site-ul <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secțiunea 6: Contact -->
+        <section id="contact" class="py-16 px-6 md:px-12 bg-white my-12 rounded-xl shadow-md mx-auto max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-10">Contactează-ne</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <!-- Coloana 1: Informații de Contact -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-6">Informații Utile</h3>
+                    <div class="space-y-4 text-gray-700 text-lg">
+                        <p><i class="fas fa-map-marker-alt text-mint-green mr-3"></i> <strong>Adresă:</strong> Strada Exemplului, Nr. 10, București</p>
+                        <p><i class="fas fa-clock text-mint-green mr-3"></i> <strong>Program:</strong> Luni - Sâmbătă, 08:00 - 22:00</p>
+                        <p><i class="fas fa-envelope text-mint-green mr-3"></i> <strong>Email:</strong> contact@serendipityspot.ro</p>
+                        <p><i class="fas fa-phone-alt text-mint-green mr-3"></i> <strong>Telefon:</strong> +40 7XX XXX XXX</p>
+                    </div>
+                </div>
+
+                <!-- Coloana 2: Formular de Contact -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-6">Trimite-ne un Mesaj</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="contact-name" class="block text-gray-700 text-sm font-bold mb-2">Numele Tău:</label>
+                            <input type="text" id="contact-name" name="name" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" placeholder="Numele Complet">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-gray-700 text-sm font-bold mb-2">Adresa de Email:</label>
+                            <input type="email" id="contact-email" name="email" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" placeholder="adresa@exemplu.com">
+                        </div>
+                        <div>
+                            <label for="contact-message" class="block text-gray-700 text-sm font-bold mb-2">Mesajul Tău:</label>
+                            <textarea id="contact-message" name="message" rows="5" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" placeholder="Scrie mesajul aici..."></textarea>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <button type="submit" class="bg-mint-green hover:bg-mint-green-darker text-dark-blue font-bold py-3 px-8 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+                                Trimite Mesajul
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Harta Google Maps -->
+            <div class="w-full h-96 rounded-xl overflow-hidden shadow-lg">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.844783115456!2d26.09630651558239!3d44.42676777910116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201f1f2f2f2f1%3A0x123456789abcdef0!2sBucure%C8%99ti%2C%20Rom%C3%A2nia!5e0!3m2!1sen!2sro!4v1678901234567!5m2!1sen!2sro"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-blue text-gray-300 py-12 px-6 md:px-12 rounded-t-xl">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Coloana 1: Informații despre companie -->
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Serendipity Spot</h4>
+                <p class="text-sm leading-relaxed">
+                    Oferim spații flexibile și confortabile pentru închiriere pe oră sau pe zi, adaptate nevoilor tale de lucru, relaxare sau întâlniri.
+                </p>
+            </div>
+
+            <!-- Coloana 2: Link-uri utile -->
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Link-uri Utile</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-mint-green transition duration-200">Politica de Cookies</a></li>
+                    <li><a href="#" class="hover:text-mint-green transition duration-200">Politica de Confidențialitate</a></li>
+                    <li><a href="#" class="hover:text-mint-green transition duration-200">Termeni și Condiții</a></li>
+                    <li><a href="#" class="hover:text-mint-green transition duration-200">Politica de Livrare a Serviciilor</a></li>
+                    <li><a href="#" class="hover:text-mint-green transition duration-200">Politica Anulării Comenzilor</a></li>
+                </ul>
+            </div>
+
+            <!-- Coloana 3: Modalități de plată -->
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Modalități de Plată</h4>
+                <p class="text-sm mb-2">Acceptăm:</p>
+                <div class="flex flex-wrap gap-3">
+                    <i class="fab fa-cc-visa text-3xl hover:text-mint-green transition duration-200"></i>
+                    <i class="fab fa-cc-mastercard text-3xl hover:text-mint-green transition duration-200"></i>
+                    <i class="fab fa-cc-paypal text-3xl hover:text-mint-green transition duration-200"></i>
+                    <i class="fab fa-cc-stripe text-3xl hover:text-mint-green transition duration-200"></i>
+                    <!-- Adaugă alte pictograme relevante pentru metode de plată -->
+                </div>
+            </div>
+
+            <!-- Coloana 4: Legal -->
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Legal</h4>
+                <p class="text-sm mb-4">Soluționarea litigiilor:</p>
+                <div class="flex space-x-4">
+                    <a href="https://anpc.ro/" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition duration-200">
+                        <img src="https://placehold.co/60x60/FFFFFF/000000?text=ANPC" alt="ANPC Logo" class="w-16 h-auto rounded-md">
+                    </a>
+                    <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.show" target="_blank" rel="noopener noreferrer" class="hover:opacity-75 transition duration-200">
+                        <img src="https://placehold.co/60x60/FFFFFF/000000?text=ODR" alt="ODR Logo" class="w-16 h-auto rounded-md">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-8">
+            &copy; 2023 Serendipity Spot. Toate drepturile rezervate.
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Image Slider functionality
+        const sliders = {}; // Store current slide index for each room
+
+        function initializeSliders() {
+            document.querySelectorAll('.slider-container').forEach(container => {
+                const roomName = container.dataset.room;
+                sliders[roomName] = {
+                    currentIndex: 0,
+                    wrapper: container.querySelector('.slider-wrapper'),
+                    items: container.querySelectorAll('.slider-item')
+                };
+                updateSlider(roomName);
+            });
+        }
+
+        function updateSlider(roomName) {
+            const slider = sliders[roomName];
+            const offset = -slider.currentIndex * 100;
+            slider.wrapper.style.transform = `translateX(${offset}%)`;
+        }
+
+        function moveSlide(roomName, direction) {
+            const slider = sliders[roomName];
+            slider.currentIndex += direction;
+
+            if (slider.currentIndex < 0) {
+                slider.currentIndex = slider.items.length - 1;
+            } else if (slider.currentIndex >= slider.items.length) {
+                slider.currentIndex = 0;
+            }
+            updateSlider(roomName);
+        }
+
+        // Booking Form Logic
+        const hourlyOptions = document.getElementById('hourly-options');
+        const dailyOptions = document.getElementById('daily-options');
+        const hourlyStartTimeSelect = document.getElementById('hourly-start-time');
+        const hourlyDurationSelect = document.getElementById('hourly-duration');
+        const dailyStartTimeSelect = document.getElementById('daily-start-time');
+        const bookingForm = document.getElementById('booking-form');
+        const bookingMessage = document.getElementById('booking-message');
+        const errorMessage = document.getElementById('error-message');
+
+        // Generate hourly start time options (8:00 - 22:00)
+        function generateHourlyStartTimes() {
+            hourlyStartTimeSelect.innerHTML = ''; // Clear previous options
+            for (let i = 8; i <= 22; i++) {
+                const hour = String(i).padStart(2, '0') + ':00';
+                const option = document.createElement('option');
+                option.value = hour;
+                option.textContent = hour;
+                hourlyStartTimeSelect.appendChild(option);
+            }
+        }
+
+        // Generate hourly duration options (1 to max possible hours)
+        function generateHourlyDurationOptions() {
+            hourlyDurationSelect.innerHTML = ''; // Clear previous options
+            // Max duration is 22 - 8 = 14 hours
+            for (let i = 1; i <= 14; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `${i} oră${i > 1 ? 'e' : ''}`;
+                hourlyDurationSelect.appendChild(option);
+            }
+        }
+
+        // Generate daily start time options (8:00 - 22:00)
+        function generateDailyStartTimes() {
+            dailyStartTimeSelect.innerHTML = ''; // Clear previous options
+            for (let i = 8; i <= 22; i++) {
+                const hour = String(i).padStart(2, '0') + ':00';
+                const option = document.createElement('option');
+                option.value = hour;
+                option.textContent = hour;
+                dailyStartTimeSelect.appendChild(option);
+            }
+        }
+
+        function toggleBookingOptions() {
+            const bookingType = document.querySelector('input[name="booking-type"]:checked').value;
+            if (bookingType === 'hourly') {
+                hourlyOptions.classList.remove('hidden');
+                dailyOptions.classList.add('hidden');
+                hourlyStartTimeSelect.setAttribute('required', 'true');
+                hourlyDurationSelect.setAttribute('required', 'true');
+                dailyStartTimeSelect.removeAttribute('required');
+            } else { // daily
+                hourlyOptions.classList.add('hidden');
+                dailyOptions.classList.remove('hidden');
+                hourlyStartTimeSelect.removeAttribute('required');
+                hourlyDurationSelect.removeAttribute('required');
+                dailyStartTimeSelect.setAttribute('required', 'true');
+            }
+        }
+
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            bookingMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+
+            const room = document.getElementById('room-select').value;
+            const bookingDate = document.getElementById('booking-date').value;
+            const userName = document.getElementById('user-name').value;
+            const userEmail = document.getElementById('user-email').value;
+            const bookingType = document.querySelector('input[name="booking-type"]:checked').value;
+
+            let bookingDetails = {};
+
+            if (bookingType === 'hourly') {
+                const startTime = hourlyStartTimeSelect.value;
+                const duration = hourlyDurationSelect.value;
+                if (!startTime || !duration) {
+                    errorMessage.textContent = "Vă rugăm să selectați ora de început și durata pentru rezervarea pe oră.";
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+                bookingDetails = {
+                    type: 'hourly',
+                    startTime: startTime,
+                    duration: `${duration} ore`
+                };
+            } else { // daily
+                const dailyStartTime = dailyStartTimeSelect.value;
+                if (!dailyStartTime) {
+                    errorMessage.textContent = "Vă rugăm să selectați ora de început pentru rezervarea pe zi.";
+                    errorMessage.classList.remove('hidden');
+                    return;
+                }
+                bookingDetails = {
+                    type: 'daily',
+                    startTime: dailyStartTime,
+                    duration: 'Întreaga zi'
+                };
+            }
+
+            if (!room || !bookingDate || !userName || !userEmail) {
+                errorMessage.textContent = "Vă rugăm să completați toate câmpurile obligatorii.";
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+
+            const formData = {
+                room: room,
+                date: bookingDate,
+                ...bookingDetails, // Spread bookingDetails here
+                name: userName,
+                email: userEmail
+            };
+
+            console.log("Date de rezervare:", formData);
+
+            // Simulate API call
+            setTimeout(() => {
+                // In a real application, you would send this data to a server
+                // using fetch() or XMLHttpRequest.
+                /*
+                fetch('/api/book', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        bookingMessage.classList.remove('hidden');
+                        bookingForm.reset(); // Clear form on success
+                        generateHourlyStartTimes(); // Regenerate for fresh state
+                        generateHourlyDurationOptions();
+                        generateDailyStartTimes();
+                        toggleBookingOptions(); // Reset to default hourly view
+                    } else {
+                        errorMessage.textContent = data.message || "A apărut o eroare la trimiterea rezervării.";
+                        errorMessage.classList.remove('hidden');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    errorMessage.textContent = "A apărut o eroare de rețea. Vă rugăm să încercați din nou.";
+                    errorMessage.classList.remove('hidden');
+                });
+                */
+
+                // For demonstration, assume success
+                bookingMessage.classList.remove('hidden');
+                bookingForm.reset(); // Clear form on success
+                generateHourlyStartTimes(); // Regenerate for fresh state
+                generateHourlyDurationOptions();
+                generateDailyStartTimes();
+                toggleBookingOptions(); // Reset to default hourly view
+            }, 1000); // Simulate network delay
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeSliders();
+            generateHourlyStartTimes();
+            generateHourlyDurationOptions();
+            generateDailyStartTimes();
+            toggleBookingOptions(); // Set initial state based on default radio button
+        });
+    </script>
+</body>
+</html>

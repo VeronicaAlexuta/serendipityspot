@@ -1,0 +1,35 @@
+🎨 Culori utilizate:
+Bleumarin (culoarea textului și simbolului):
+#1C2B39 (ton profund, elegant)
+
+Verde mentă (fundalul):
+#B9D8C2 (ton calm, echilibrat, profesional)
+
+Font name: Playfair Display sau Cormorant Garamond
+
+
+🎯 Ce funcționează bine pentru un pliant Serendipity Spot:
+1. Titluri și accente:
+Păstrează fontul din logo:
+Cormorant Garamond sau Playfair Display – aduce continuitate vizuală și eleganță
+
+2. Text curent (paragrafe):
+Alege un font complementar, modern și lizibil, cum ar fi:
+
+Lato
+
+Libre Franklin
+
+Inter
+
+Source Sans Pro
+
+Acestea echilibrează foarte bine rafinamentul titlurilor cu claritatea necesară pentru citirea ușoară.
+
+📐 Ex. combinație recomandată pentru pliant:
+Titlu: Cormorant Garamond Bold, 24 pt, bleumarin
+
+Subtitlu: Cormorant Garamond Italic, 16 pt, verde mentă sau gri închis
+
+Paragraf: Lato Regular, 11–12 pt, gri închis (#333333)
+
