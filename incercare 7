@@ -76,7 +76,7 @@
     <header class="fixed-header py-4 px-6 md:px-12 flex justify-between items-center rounded-b-xl">
         <div class="text-2xl font-bold text-dark-blue">
             <!-- Logo-ul tău aici. Poți înlocui 'https://placehold.co/150x40/B9D8C2/1C2B39?text=Logo' cu URL-ul logo-ului tău real. -->
-            <img src="./Images/" alt="Serendipity Spot Logo" class="h-10">
+            <img src="./Logo Serendipity Spot.png" alt="Serendipity Spot Logo" class="h-12">
         </div>
         <nav class="hidden md:flex space-x-6">
             <a href="#acasa" class="text-gray-600 hover:text-dark-blue font-medium transition duration-300 rounded-md p-2">Acasă</a>
@@ -139,7 +139,7 @@
                         <li> O sala de grup, de 8-10 persoane, cu tabla si markere.</li>
                         <li> Un cabinet pretabil pentru activitati cu copii.</li>
                         <li> Acces la bucataria complet mobilata si utilata.</li>
-                        <li> Acces facil la mijloace de transpot in comun.</li>
+                        <li> Acces facil la mijloace de transport in comun.</li>
                     </ul>
                 </div>
                 <div class="flex justify-center items-center">
@@ -150,7 +150,7 @@
 
         <!-- Secțiunea 3: Camere -->
         <section id="camere" class="py-16 px-6 md:px-12 bg-gray-100 my-12 rounded-xl shadow-md mx-auto max-w-6xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Camerele Noastre</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Cabinetele Noastre</h2>
 
             <!-- Camera 1 -->
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row items-center gap-8">
@@ -159,20 +159,22 @@
                         <img src="./Images/IMG_20250614_114550.jpg" alt="Camera 1 Imagine 1" class="slider-item rounded-xl">
                         <img src="./Images/IMG_20250614_114624.jpg" alt="Camera 1 Imagine 2" class="slider-item rounded-xl">
                         <img src="./Images/IMG_20250614_114652.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
-                        <img src="./Images/IMG_20250614_114734.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
-                        <img src="./Images/IMG_20250614_114753.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_115006.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
                         <img src="./Images/IMG_20250614_115057.jpg" alt="Camera 1 Imagine 3" class="slider-item rounded-xl">
                     </div>
                     <button class="slider-button left" onclick="moveSlide('camera1', -1)">&#10094;</button>
                     <button class="slider-button right" onclick="moveSlide('camera1', 1)">&#10095;</button>
                 </div>
                 <div class="md:w-1/2 w-full text-center md:text-left">
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Deluxe</h3>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Cabinetul Azur</h3>
                     <p class="text-gray-700 mb-6">
-                        O cameră spațioasă și elegantă, ideală pentru sesiuni de coaching, întâlniri de afaceri sau sesiuni de terapie. Dotată cu mobilier modern și lumină naturală abundentă.
+                        O cameră spațioasă și elegantă (~12mp), ideală pentru sesiuni de coaching, întâlniri de afaceri sau sesiuni de terapie.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Dotat cu mobilier modern și tot ce ai nevoie in materie de papetărie, cabinetul nostru este gata pregatit de utilizare.
                     </p>
                     <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
-                        Rezervă Camera Deluxe
+                        Rezervă Cabinetul Azur
                     </a>
                 </div>
             </div>
@@ -181,20 +183,23 @@
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row-reverse items-center gap-8">
                 <div class="md:w-1/2 w-full slider-container" data-room="camera2">
                     <div class="slider-wrapper">
-                        <img src="https://placehold.co/800x600/FFFDE7/333333?text=Camera+2+-+Imagine+1" alt="Camera 2 Imagine 1" class="slider-item rounded-xl">
-                        <img src="https://placehold.co/800x600/FFE0B2/333333?text=Camera+2+-+Imagine+2" alt="Camera 2 Imagine 2" class="slider-item rounded-xl">
-                        <img src="https://placehold.co/800x600/FFCCBC/333333?text=Camera+2+-+Imagine+3" alt="Camera 2 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_115540.jpg" alt="Camera 2 Imagine 1" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_115608.jpg" alt="Camera 2 Imagine 2" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_115757.jpg" alt="Camera 2 Imagine 3" class="slider-item rounded-xl">
                     </div>
                     <button class="slider-button left" onclick="moveSlide('camera2', -1)">&#10094;</button>
                     <button class="slider-button right" onclick="moveSlide('camera2', 1)">&#10095;</button>
                 </div>
                 <div class="md:w-1/2 w-full text-center md:text-right">
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Zen</h3>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Cabinetul Golden</h3>
                     <p class="text-gray-700 mb-6">
-                        O oază de liniște, perfectă pentru meditație, yoga sau sesiuni de relaxare. Design minimalist și o atmosferă calmă, ideală pentru a te deconecta.
+                        Inspirat de lumina soarelui, acest cabinet în tonuri de galben deschis, oferă o atmosferă deschisă, caldă și energizantă. 
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Este locul perfect pentru activități de învățare, sesiuni de consiliere sau consultații legale într-un cadru prietenos.
                     </p>
                     <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
-                        Rezervă Camera Zen
+                        Rezervă Cabinetul Golden
                     </a>
                 </div>
             </div>
@@ -203,20 +208,25 @@
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12 flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/2 w-full slider-container" data-room="camera3">
                     <div class="slider-wrapper">
-                        <img src="https://placehold.co/800x600/CFD8DC/333333?text=Camera+3+-+Imagine+1" alt="Camera 3 Imagine 1" class="slider-item rounded-xl">
-                        <img src="https://placehold.co/800x600/B2EBF2/333333?text=Camera+3+-+Imagine+2" alt="Camera 3 Imagine 2" class="slider-item rounded-xl">
-                        <img src="https://placehold.co/800x600/80DEEA/333333?text=Camera+3+-+Imagine+3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_120253.jpg" alt="Camera 3 Imagine 1" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_120320.jpg" alt="Camera 3 Imagine 2" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_120338.jpg" alt="Camera 3 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_120355.jpg" alt="Camera 3 Imagine 3" class="slider-item rounded-xl">
+                        <img src="./Images/IMG_20250614_120051.jpg" alt="Camera 3 Imagine 3" class="slider-item rounded-xl">
                     </div>
                     <button class="slider-button left" onclick="moveSlide('camera3', -1)">&#10094;</button>
                     <button class="slider-button right" onclick="moveSlide('camera3', 1)">&#10095;</button>
                 </div>
                 <div class="md:w-1/2 w-full text-center md:text-left">
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Creativă</h3>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Sala Creativă</h3>
                     <p class="text-gray-700 mb-6">
-                        Un spațiu vibrant, conceput pentru brainstorming, workshop-uri sau sesiuni creative. Echipată cu tablă de scris și facilități pentru prezentări.
+                        Un spațiu vibrant, cu o capacitate de 8-10 persoane, conceput pentru brainstorming, workshop-uri sau sesiuni creative. 
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Echipată cu tablă de scris și 2 mese mari pliabile.
                     </p>
                     <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
-                        Rezervă Camera Creativă
+                        Rezervă Sala Creativă
                     </a>
                 </div>
             </div>
@@ -225,7 +235,7 @@
             <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg flex flex-col md:flex-row-reverse items-center gap-8">
                 <div class="md:w-1/2 w-full slider-container" data-room="camera4">
                     <div class="slider-wrapper">
-                        <img src="https://placehold.co/800x600/F8BBD0/333333?text=Camera+4+-+Imagine+1" alt="Camera 4 Imagine 1" class="slider-item rounded-xl">
+                        <img src="/Images/5ae06202-ece5-4167-8ef9-6abb993f879a.jpg" alt="Camera 4 Imagine 1" class="slider-item rounded-xl">
                         <img src="https://placehold.co/800x600/F48FB1/333333?text=Camera+4+-+Imagine+2" alt="Camera 4 Imagine 2" class="slider-item rounded-xl">
                         <img src="https://placehold.co/800x600/F06292/333333?text=Camera+4+-+Imagine+3" alt="Camera 4 Imagine 3" class="slider-item rounded-xl">
                     </div>
@@ -233,12 +243,15 @@
                     <button class="slider-button right" onclick="moveSlide('camera4', 1)">&#10095;</button>
                 </div>
                 <div class="md:w-1/2 w-full text-center md:text-right">
-                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Camera Confort</h3>
+                    <h3 class="text-2xl font-semibold text-dark-blue mb-4">Cabinetul Kids</h3>
                     <p class="text-gray-700 mb-6">
-                        Perfectă pentru sesiuni individuale sau întâlniri restrânse. Oferă un ambient cald și intim, ideal pentru discuții confidențiale.
+                        Oferind un ambient cald și intim, Cabinetul Kids este perfect pentru sesiuni individuale sau întâlniri restrânse cu copii. 
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Ideal pentru logopezi sau pentru profesori care vor sa isi desfasoare activitatea intr-un mediu mai lejer.
                     </p>
                     <a href="#rezervari" class="inline-block bg-mint-green text-dark-blue py-3 px-6 rounded-full font-semibold hover:bg-mint-green-darker transition duration-300 shadow-md transform hover:scale-105">
-                        Rezervă Camera Confort
+                        Rezervă Cabinetul Kids
                     </a>
                 </div>
             </div>
@@ -252,10 +265,10 @@
                     <label for="room-select" class="block text-gray-700 text-sm font-bold mb-2">Alege Camera:</label>
                     <select id="room-select" name="room" class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-mint-green transition duration-200" required>
                         <option value="">Selectează o cameră</option>
-                        <option value="camera-deluxe">Camera Deluxe</option>
-                        <option value="camera-zen">Camera Zen</option>
-                        <option value="camera-creativa">Camera Creativă</option>
-                        <option value="camera-confort">Camera Confort</option>
+                        <option value="camera-deluxe">Cabinetul Azur</option>
+                        <option value="camera-zen">Cabinetul Golden</option>
+                        <option value="camera-creativa">Sala Creativă</option>
+                        <option value="camera-confort">Cabinetul Kids</option>
                     </select>
                 </div>
 
@@ -370,8 +383,8 @@
                 <div>
                     <h3 class="text-2xl font-semibold text-dark-blue mb-6">Informații Utile</h3>
                     <div class="space-y-4 text-gray-700 text-lg">
-                        <p><i class="fas fa-map-marker-alt text-mint-green mr-3"></i> <strong>Adresă:</strong> Strada Exemplului, Nr. 10, București</p>
-                        <p><i class="fas fa-clock text-mint-green mr-3"></i> <strong>Program:</strong> Luni - Sâmbătă, 08:00 - 22:00</p>
+                        <p><i class="fas fa-map-marker-alt text-mint-green mr-3"></i> <strong>Adresă:</strong> Strada Aliorului, Nr. 1, București</p>
+                        <p><i class="fas fa-clock text-mint-green mr-3"></i> <strong>Program:</strong> Luni - Duminică, 08:00 - 22:00</p>
                         <p><i class="fas fa-envelope text-mint-green mr-3"></i> <strong>Email:</strong> contact@serendipityspot.ro</p>
                         <p><i class="fas fa-phone-alt text-mint-green mr-3"></i> <strong>Telefon:</strong> +40 7XX XXX XXX</p>
                     </div>
